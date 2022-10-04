@@ -1,10 +1,17 @@
 const express = require("express");
+const { trusted } = require("mongoose");
 const router = express.Router();
 
 require("../db/conn");
 
 const Cust = require("../model/customerSchema");
 const Event = require('../model/eventSchema')
+
+router.get('/getAllEvent',async(req,res)=>{
+    const data = await Event.find()
+    // console.log(data)
+    return res.json({data:data,status:true})
+})
 
 router.post('/addEvent',async (req,res)=>{
     const {organizerId,
@@ -33,6 +40,7 @@ router.post('/addEvent',async (req,res)=>{
           price,
           approved,
         });
+        console.log(newData)
         await newData.save().then({message:"Event added",status:true}).catch((err)=>{
             return res.json({message:"Event cannot be added",status:false})
         })
@@ -72,7 +80,7 @@ router.post('/deleteEvent',async (req,res)=>{
     const {eventName} = req.body
 
     const data = await Event.findOneAndDelete({eventName:eventName}).then(()=>{return res.json({message:"Succesfully deleted",status:true})}).catch((err)=>{return res.json({message:"Cannot delete",status:false})})
-    
+
 })
 
 module.exports = router;
