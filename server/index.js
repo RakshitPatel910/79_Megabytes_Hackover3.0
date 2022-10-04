@@ -4,13 +4,13 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: './config.env' });
 
 require("./db/conn");
 
 app.use(express.json()); // to convert incoming data in express to json
 app.use(cors());
-
+app.use(require('./router/auth'))
 const port = process.env.PORT;
 
 app.listen(port, () => {
