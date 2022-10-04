@@ -10,7 +10,12 @@ import Home from './components/Home/Home.js';
 
 function App() {
 
-    const [user, setUser] = useState(1)
+    const [user, setUser] = useState(0)
+
+    useEffect(() => {
+      
+    }, [user])
+    
 
     return (
       <>
@@ -19,7 +24,7 @@ function App() {
           {/* <Navbar /> */}
 
           <Routes>
-            <Route path='/' exact element={ user ? <Home /> : <Auth />} />
+            <Route path='/' exact element={ user ? <Home /> : <Auth setUser={setUser} />} />
             <Route path='/admin' exact element={<AdminSignIn />} />
           </Routes>
 
