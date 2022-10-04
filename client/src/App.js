@@ -10,7 +10,7 @@ import Home from './components/Home/Home.js';
 
 function App() {
 
-    const [user, setUser] = useState(0)
+    const [user, setUser] = useState(1)
 
     return (
       <>
