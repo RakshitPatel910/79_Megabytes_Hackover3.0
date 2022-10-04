@@ -19,7 +19,18 @@ function Event() {
         image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fevent%2F&psig=AOvVaw0rQrRTt4dOhzZQvnhAuCeB&ust=1664996909379000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjngPyix_oCFQAAAAAdAAAAABAJ',
         price: 1000,
         approved: true
-    }]);
+    },
+    {
+        organizerId: '',
+        eventName: 'MusicalConcert',
+        location: 'NewYork',
+        seat: 1000,
+        availSeat: 0,
+        image: '',
+        price: 2000,
+        approved: false
+      }
+    ]);
 
     return (
         !events.length ? <CircularProgress color="secondary" /> : (
