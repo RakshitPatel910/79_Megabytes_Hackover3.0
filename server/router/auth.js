@@ -8,7 +8,7 @@ require('../db/conn')
 const Cust = require("../model/customerSchema")
 const Admin = require("../model/adminSchema")
 const Org = require("../model/organizerSchema");
-const Organizer = require("../model/organizerSchema");
+
 
 const saltRound = parseInt(process.env.SALTROUND); 
 const salt = bcrypt.genSaltSync(saltRound);
