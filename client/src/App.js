@@ -7,28 +7,35 @@ import SignUp from './components/Auth/SignUp/SignUp.js';
 import SignIn from './components/Auth/SignIn/SignIn.js';
 import AdminSignIn from './components/Auth/AdminSignIn/AdminSignIn.js';
 import Home from './components/Home/Home.js';
+import Admin from './components/Admin/Admin'
 
 function App() {
 
-    const [user, setUser] = useState(1)
+    // const [user, setUser] = useState(1)
 
-    useEffect(() => {
+    // useEffect(() => {
       
-    }, [user])
+    // }, [user])
     
 
-    return (
+    // return (
+    //   <>
+    //     <BrowserRouter>
+
+    //       {/* <Navbar /> */}
+
+    //       <Routes>
+    //         <Route path='/' exact element={ user ? <Home /> : <Auth setUser={setUser} />} />
+    //         <Route path='/admin' exact element={<AdminSignIn />} />
+    //       </Routes>
+
+    //     </BrowserRouter>
+    //   </>
+    // )
+
+    return(
       <>
-        <BrowserRouter>
-
-          {/* <Navbar /> */}
-
-          <Routes>
-            <Route path='/' exact element={ user ? <Home /> : <Auth setUser={setUser} />} />
-            <Route path='/admin' exact element={<AdminSignIn />} />
-          </Routes>
-
-        </BrowserRouter>
+        <Admin/>
       </>
     )
 }

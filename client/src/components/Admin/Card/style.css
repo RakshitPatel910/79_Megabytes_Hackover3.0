@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.card{
+    height: 23%;
+    width: 90%;
+    background-color: bisque;
+    margin: 46px;
+}
+
+.cardHeader{
+    margin:10px;
+    color:#2f2d29
+}
+
+.cardInfo{
+    margin:10px;
+    color:#5e5a52;
+    font-size: 18px;
+}
+
+.adhaar{
+    text-decoration: none;
+    color: #5e5a52;
+    margin: 10px;
+    align-items: center;
+}
+
+.icon{
+    size: 10px;
+}

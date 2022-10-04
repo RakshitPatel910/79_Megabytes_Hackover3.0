@@ -41,7 +41,7 @@ router.post('/addEvent',async (req,res)=>{
           approved,
         });
         console.log(newData)
-        await newData.save().then({message:"Event added",status:true}).catch((err)=>{
+        await newData.save().then(()=>{return res.json({message:"Event added",status:true})}).catch((err)=>{
             return res.json({message:"Event cannot be added",status:false})
         })
     }
