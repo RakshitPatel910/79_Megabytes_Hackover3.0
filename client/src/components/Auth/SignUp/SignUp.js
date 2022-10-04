@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -13,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 // function Copyright(props) {
 //   return (
@@ -28,21 +31,60 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // }
 
 const theme = createTheme();
+const initialState = { userName: "", email: "", password:"" };
 
 export default function SignIn({ setIsSignUp }) {
-    const [loginType, setLoginType] = useState('');
+    const navigate = useNavigate();
+
+    const [profile,setProfile] = useState(initialState);
+    const [registerType, setRegisterType] = useState(0);
 
     const handleChange = (event) => {
-      setLoginType(event.target.value);
+      setRegisterType(event.target.value);
+      console.log(registerType)
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-        });
+    const handleSubmit = async () => {
+        // event.preventDefault();
+        // const data = new FormData(event.currentTarget);
+        // console.log({
+        // email: data.get('email'),
+        // password: data.get('password'),
+        // });
+        console.log(profile)
+        if( registerType === 10 ) {
+            console.log('customer')
+            const data = await axios.post('http://localhost:3010/custSignup',{
+                userName: profile.userName,
+                email: profile.email,
+                password: profile.password,
+            })
+
+            if(data.data.status == true){
+                console.log("status is true")
+                // navigate("/home");
+                setIsSignUp(0);
+            }
+                else{
+                alert('Email or Password is incorrect')
+            } 
+        }
+
+        if( registerType === 20 ) {
+            const data = await axios.post('http://localhost:3010/orgSignup',{
+                userName: profile.userName,
+                email: profile.email,
+                password: profile.password,
+            })
+
+            if(data.data.status == true){
+                console.log("status is true")
+                navigate("/home");
+                }
+                else{
+                alert('Email or Password is incorrect')
+            } 
+        }
     };
 
     return (
@@ -63,6 +105,20 @@ export default function SignIn({ setIsSignUp }) {
                 Sign up
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="userName"
+                label="User Name"
+                name="userName"
+                autoComplete="userName"
+                autoFocus
+                value={profile.userName} 
+                onChange={(e)=>{setProfile({...profile,userName:e.target.value})}}
+                />
+
                 <TextField
                 margin="normal"
                 required
@@ -71,7 +127,9 @@ export default function SignIn({ setIsSignUp }) {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                autoFocus
+                // autoFocus
+                value={profile.email} 
+                onChange={(e)=>{setProfile({...profile,email:e.target.value})}}
                 />
 
             <Box sx={{ minWidth: 120, marginTop: 2 }}>
@@ -80,8 +138,8 @@ export default function SignIn({ setIsSignUp }) {
                         <Select
                         // labelId="demo-simple-select-label"
                         // id="demo-simple-select"
-                        value={loginType}
-                        label="loginType"
+                        value={registerType}
+                        label="registerType"
                         onChange={handleChange}
                         >
                             <MenuItem value={10}>Customer</MenuItem>
@@ -100,6 +158,9 @@ export default function SignIn({ setIsSignUp }) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => {
+                    setProfile({ ...profile, password: e.target.value });
+                }}
                 />
 
                 <TextField
@@ -121,10 +182,11 @@ export default function SignIn({ setIsSignUp }) {
             
 
                 <Button
-                    type="submit"
+                    // type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    onClick={() => {handleSubmit()}}
                 >
                     Sign Up
                 </Button>

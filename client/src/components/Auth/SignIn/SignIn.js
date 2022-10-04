@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -13,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 // function Copyright(props) {
 //   return (
@@ -28,21 +31,59 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // }
 
 const theme = createTheme();
+const initialState = { email: "", password:"" };
 
-export default function SignIn({ setIsSignUp }) {
-    const [loginType, setLoginType] = useState('');
+export default function SignIn({ setIsSignUp, setUser }) {
+    const navigate = useNavigate();
+
+    const [profile,setProfile] = useState(initialState);
+    const [loginType, setLoginType] = useState(0);
 
     const handleChange = (event) => {
       setLoginType(event.target.value);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-        });
+    const handleSubmit = async () => {
+        // event.preventDefault();
+        // const data = new FormData(event.currentTarget);
+        // console.log({
+        // email: data.get('email'),
+        // password: data.get('password'),
+        // });
+
+        if( loginType === 10 ) {
+            console.log('customer')
+            const data = await axios.post('http://localhost:3010/custSignin',{
+                email: profile.email,
+                password: profile.password,
+            })
+
+            if(data.data.status == true){
+                console.log("status is true")
+                // navigate("/");
+                setUser(1);
+                }
+                else{
+                alert('Email or Password is incorrect')
+            } 
+        }
+
+        if( loginType === 20 ) {
+            const data = await axios.post('http://localhost:3010/orgSignin',{
+                email: profile.email,
+                password: profile.password,
+            })
+
+            if(data.data.status == true){
+                console.log("status is true")
+                // navigate("/home");
+                setUser(1);
+                }
+                else{
+                alert('Email or Password is incorrect')
+            } 
+        }
+
     };
 
     return (
@@ -62,7 +103,7 @@ export default function SignIn({ setIsSignUp }) {
             <Typography component="h1" variant="h5">
                 Sign in
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
                 <TextField
                 margin="normal"
                 required
@@ -72,6 +113,8 @@ export default function SignIn({ setIsSignUp }) {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={profile.email} 
+                onChange={(e)=>{setProfile({...profile,email:e.target.value})}}
                 />
                 <TextField
                 margin="normal"
@@ -82,6 +125,9 @@ export default function SignIn({ setIsSignUp }) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => {
+                    setProfile({ ...profile, password: e.target.value });
+                  }}
                 />
                 {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -106,10 +152,11 @@ export default function SignIn({ setIsSignUp }) {
             </Box>
 
                 <Button
-                    type="submit"
+                    // type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    onClick={() => handleSubmit()}
                 >
                     Sign In
                 </Button>
