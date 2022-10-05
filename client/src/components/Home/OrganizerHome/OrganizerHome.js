@@ -17,12 +17,12 @@ function OrganizerHome() {
 
     return (
         <Grow in>
-            <Container >
-                <Grid className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={7}> 
+            <Container sx={{ width: '95%' }}>
+                <Grid className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={5}> 
                     <Grid item xs={12} sm={7}>
                         <Event   />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={5}>
                         <Form currentId={currentId}  setCurrentId={setCurrentId} />
                     </Grid>
                 </Grid>

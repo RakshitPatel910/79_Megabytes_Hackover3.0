@@ -5,7 +5,7 @@ import SignUp from './SignUp/SignUp';
 
 
 
-const Auth = ({ setUser }) => {
+const Auth = ({ setUser, setOrganizer }) => {
 
     const [isSignUp, setIsSignUp] = useState(0); 
 
@@ -18,7 +18,7 @@ const Auth = ({ setUser }) => {
         {isSignUp ? (
           <SignUp  setIsSignUp={setIsSignUp} />
         ) : (
-          <SignIn  setIsSignUp={setIsSignUp} setUser={setUser} />
+          <SignIn  setIsSignUp={setIsSignUp} setUser={setUser} setOrganizer={setOrganizer} />
         )}
         {/* <Signup />
         <Signin /> */}

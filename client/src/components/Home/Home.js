@@ -8,13 +8,16 @@ import EventCard from './OrganizerHome/Event/EventCard/EventCard.js';
 import Form from './OrganizerHome/Form/Form.js';
 import OrganizerHome from './OrganizerHome/OrganizerHome.js';
 
-function Home() {
+function Home({ user, organizer }) {
     return (
         <>
             <Navbar />
             {/* <EventCard /> */}
             {/* <Event /> */}
             <OrganizerHome />
+            
+            {/* { organizer ? <OrganizerHome /> : <></> } */}
+
             {/* <Form /> */}
             <Routes>
                 {/* <Auth /> */}

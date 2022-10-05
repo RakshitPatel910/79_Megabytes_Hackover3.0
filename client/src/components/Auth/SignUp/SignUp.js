@@ -79,7 +79,8 @@ export default function SignIn({ setIsSignUp }) {
 
             if(data.data.status == true){
                 console.log("status is true")
-                navigate("/home");
+                setIsSignUp(0);
+                // navigate("/home");
                 }
                 else{
                 alert('Email or Password is incorrect')
