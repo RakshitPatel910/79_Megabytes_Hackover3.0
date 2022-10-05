@@ -45,4 +45,17 @@ router.post('/totalLike',async(req,res)=>{
     }
 })
 
+router.post('/getAvailableSeat',async(req,res)=>{
+    const {eventName} = req.body
+    const data = await Event.findOne({eventName:eventName})
+    if(data){
+        const seat = data.seat
+        const bookedSeat = data.bookedSeat
+        let availSeat = seat - bookedSeat
+        return res.json({availSeat:availSeat,status:true})
+    }else{
+        return res.json({message:"Event does not exist",status:false})
+    }
+})
+
 module.exports = router;

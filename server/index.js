@@ -14,6 +14,7 @@ app.use(cors());
 app.use(require('./router/auth'))
 app.use(require('./router/organizer'))
 app.use(require('./router/event'))
+app.use(require('./router/customer'))
 
 const port = process.env.PORT;
 
