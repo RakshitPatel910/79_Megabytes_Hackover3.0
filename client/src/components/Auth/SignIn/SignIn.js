@@ -52,7 +52,7 @@ export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
         // });
 
         if( loginType === 10 ) {
-            console.log('customer')
+            // console.log('customer')
             const data = await axios.post('http://localhost:3010/custSignin',{
                 email: profile.email,
                 password: profile.password,
