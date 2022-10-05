@@ -33,7 +33,7 @@ import axios from 'axios';
 const theme = createTheme();
 const initialState = { email: "", password:"" };
 
-export default function SignIn({ setIsSignUp, setUser }) {
+export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
     const navigate = useNavigate();
 
     const [profile,setProfile] = useState(initialState);
@@ -62,10 +62,12 @@ export default function SignIn({ setIsSignUp, setUser }) {
                 console.log("status is true")
                 // navigate("/");
                 setUser(1);
+                // setUser({ userId: data.profile._id, type: 10 })
                 }
                 else{
                 alert('Email or Password is incorrect')
             } 
+
         }
 
         if( loginType === 20 ) {
@@ -78,10 +80,12 @@ export default function SignIn({ setIsSignUp, setUser }) {
                 console.log("status is true")
                 // navigate("/home");
                 setUser(1);
-                }
-                else{
+                // setOrganizer({ userId: data.profile._id, type: 20 });
+            }
+            else{
                 alert('Email or Password is incorrect')
             } 
+
         }
 
     };
