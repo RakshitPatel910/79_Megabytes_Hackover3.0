@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 const Cust = require("../model/customerSchema");
+const Event = require("../model/eventSchema");
 require("../db/conn");
 
 router.get('/allCust',async (req,res)=>{
@@ -52,6 +53,9 @@ router.post('/regEvent',async (req,res)=>{
         }
         data.eventList.push(newEvent)
         await Cust.findOneAndUpdate({email},data)
+        let eventData = await Event.findOne({eventName:eventName})
+        eventData.bookedSeat = eventData.bookedSeat + 1
+        await Event.findOneAndUpdate({eventName:eventName},eventData)
         return res.json({message:"Event registered",status:true})
     }
 

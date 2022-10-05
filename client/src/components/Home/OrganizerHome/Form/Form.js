@@ -79,7 +79,7 @@ function Form({  }) {
 
     return (
         <Paper className={classes.paper}>
-            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`}>
                 {/* <Typography variant="h6">{ currentId ? 'Editing' : 'Creating' } a Memory</Typography> */}
                 <TextField name="eventName" variant="outlined" label="EventName" fullWidth value={eventData.eventName} onChange={(e) => setEventData({ ...eventData, eventName: e.target.value })}></TextField>
                 <TextField name="location" variant="outlined" label="Location" fullWidth value={eventData.location} onChange={(e) => setEventData({ ...eventData, location: e.target.value })}></TextField>
@@ -101,7 +101,9 @@ function Form({  }) {
                 <div className={classes.fileInput}>
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setEventData({ ...eventData, image: base64 })} />
                 </div>
-                <Button className={classes.buttonSubmit} variant="contained" size="large" color="primary" type="submit" fullWidth>Submit</Button>
+                <Button className={classes.buttonSubmit} variant="contained" size="large" color="primary" onClick={()=>{
+                    handleSubmit()
+                }} fullWidth>Submit</Button>
                 <Button  variant="contained" size="medium" color="secondary" onClick={clear} fullWidth>Clear</Button>
             </form>
         </Paper>
