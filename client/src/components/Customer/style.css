@@ -1,0 +1,63 @@
+.container{
+    background-color: #8cd3ff;
+    height: 60%;
+    width:50%;
+    margin:auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+/* 
+.container > h2{
+    margin: 20px;
+    margin-left: 30px; */
+/* } */
+
+.image{
+    border-radius: 10px;
+}
+
+.info h2{
+    margin: 20px;
+    margin-left: 30px;
+}
+
+.heading{
+    background-color: rgb(218, 242, 246);
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    color: #2e2e2c
+    /* justify-content: space-between; */
+}
+
+.eventName{
+    font-size: 40px;
+    padding-top: 30px;
+}
+
+.info{
+    color: #454442;
+    background-color: rgb(218, 242, 246);
+    margin: auto;
+    height: 300px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    width: 90%
+}
+
+.image{
+    height: 160px;
+    width: 160px;
+    margin: 30px;
+}
+
+.button{
+    align-self: center;
+    width: 40%;
+    
+}
+
+
+
