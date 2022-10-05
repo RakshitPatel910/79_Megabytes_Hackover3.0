@@ -11,6 +11,7 @@ import Admin from './components/Admin/Admin'
 
 function App() {
 
+    // const [user, setUser] = useState(1)
     const [user, setUser] = useState(0)
     const [customer, setCustomer] = useState(null);
     const [organizer, setOrganizer] = useState(null);

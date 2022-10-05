@@ -4,12 +4,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 .card{
     height: 23%;
     width: 90%;
     background-color: bisque;
     margin: 46px;
+    display: flex;
+    flex-direction: row;
 }
 
 .cardHeader{
@@ -33,3 +34,15 @@
 .icon{
     size: 10px;
 }
+
+.approve{
+    display:flex;
+    flex-direction: column;
+    margin-left:50%;
+}
+
+.approve > .button{
+    margin: 16px;
+}
+
+

@@ -10,8 +10,11 @@ require("./db/conn");
 
 app.use(express.json()); // to convert incoming data in express to json
 app.use(cors());
+
 app.use(require('./router/auth'))
 app.use(require('./router/organizer'))
+app.use(require('./router/event'))
+
 const port = process.env.PORT;
 
 app.listen(port, () => {

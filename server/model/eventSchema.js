@@ -9,7 +9,8 @@ const eventSchema = new mongoose.Schema({
     availSeat: Number,
     image: String,
     price: Number,
-    approved: Boolean
+    approved: Boolean,
+    like:[String]
 });
 
 const Event = mongoose.model('Event', eventSchema);

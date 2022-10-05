@@ -5,9 +5,36 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import useStyles from '../styles';
+import axios from 'axios'
 
 function EventCard({ event, setCurrentId }) {
     
+
+    const handleSubmit = async () => {
+    //    // event.preventDefault();
+    //    // const data = new FormData(event.currentTarget);
+    //    // console.log({
+    //    // email: data.get('email'),
+    //    // password: data.get('password'),
+    //    // });
+
+    
+    //      console.log("customer");
+         const data = await axios.get("http://localhost:3010/deleteEvent",{
+            eventName:event.eventName
+         });
+            console.log(data)
+         if (data.data.status == true) {
+        //    console.log("status is true");
+
+           // navigate("/");
+        //    setEvents(data.data)
+           // setUser({ userId: data.profile._id, type: 10 })
+         } else {
+           alert("Email or Password is incorrect");
+    }
+}
+
     const classes = useStyles();
 
     return (
@@ -39,7 +66,7 @@ function EventCard({ event, setCurrentId }) {
                     &nbsp; Like &nbsp;
                     {event.likeCount}
                 </Button>
-                <Button size="small" color="primary" onClick={() => {}} >
+                <Button size="small" color="primary" onClick={() => {handleSubmit()}} >
                     <DeleteIcon fontSize="small" />
                     &nbsp; Delete
                 </Button>

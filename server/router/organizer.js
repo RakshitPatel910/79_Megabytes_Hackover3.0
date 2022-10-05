@@ -5,12 +5,20 @@ const router = express.Router();
 require("../db/conn");
 
 const Cust = require("../model/customerSchema");
+const { events } = require("../model/eventSchema");
 const Event = require('../model/eventSchema')
 
-router.get('/getAllEvent',async(req,res)=>{
-    const data = await Event.find()
-    // console.log(data)
-    return res.json({data:data,status:true})
+router.post('/events',async (req,res)=>{
+    const {organizerId} = req.body
+    let event = []
+    const data = await Event.find({})
+    data.map(e=>{
+        if(e.organizerId == organizerId){
+            event.push(e)
+        }
+    })
+
+    return res.json({event:events,status:true})
 })
 
 router.post('/addEvent',async (req,res)=>{
@@ -56,11 +64,11 @@ router.post('/editEvent',async(req,res)=>{
     availSeat,
     image,
     price,
-    approved}  = req.body
+    approved,prevName}  = req.body
 
-    const oldName = eventName;
+    const oldName = prevName;
 
-    const data = await Event.findOne({eventName:eventName})
+    const data = await Event.findOne({eventName:oldName})
     if(data){
         data.eventName = eventName,
         data.location = location,
