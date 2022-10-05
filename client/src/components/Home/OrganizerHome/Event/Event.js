@@ -74,15 +74,16 @@ function Event() {
         // password: data.get('password'),
         // });
         const user = JSON.parse(localStorage.getItem('profile'));
-        console.log(user._id);
-        const data = await axios.post("http://localhost:3010/events", {organizerId: JSON.stringify(user._id)});
-        // console.log(data);
+        const id = `${user._id}`;
+        console.log(typeof id);
+        console.log(JSON.stringify(user._id))
+        const data = await axios.post("http://localhost:3010/events", {organizerId: id});
         console.log(data)
         // if (data.data.status == true) {
           //    console.log("status is true");
 
           // navigate("/");
-          // setEvents(data.data.event);
+          setEvents(data.data.event);
           // setUser({ userId: data.profile._id, type: 10 })
         // } else {
         //   alert("Email or Password is incorrect");
