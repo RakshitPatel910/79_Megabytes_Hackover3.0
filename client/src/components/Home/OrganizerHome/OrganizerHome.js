@@ -17,7 +17,7 @@ function OrganizerHome() {
 
     return (
         <Grow in>
-            <Container sx={{ width: '95%' }}>
+            <Container style={{ width: '95%' }}>
                 <Grid className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={5}> 
                     <Grid item xs={12} sm={7}>
                         <Event   />

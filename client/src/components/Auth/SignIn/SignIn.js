@@ -37,7 +37,7 @@ export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
     const navigate = useNavigate();
 
     const [profile,setProfile] = useState(initialState);
-    const [loginType, setLoginType] = useState(0);
+    const [loginType, setLoginType] = useState(10);
 
     const handleChange = (event) => {
       setLoginType(event.target.value);
@@ -59,10 +59,11 @@ export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
             })
 
             if(data.data.status == true){
-                console.log("status is true")
-                // navigate("/");
+                console.log("status is true");
+                localStorage.setItem('profile', JSON.stringify( { ...data.data.profile } ));
                 setUser({ userId: data.profile._id, type: 10 })
                 setUser(1);
+                navigate("/customer");
                 }
                 else{
                 alert('Email or Password is incorrect')
@@ -78,9 +79,10 @@ export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
 
             if(data.data.status == true){
                 console.log("status is true")
-                // navigate("/home");
+                localStorage.setItem('profile', JSON.stringify( { ...data.data.profile } ));
                 setOrganizer({ userId: data.data.profile._id, type: 20 });
                 setUser(1);
+                navigate("/organizer");
             }
             else{
                 alert('Email or Password is incorrect')

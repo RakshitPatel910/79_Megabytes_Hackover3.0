@@ -17,11 +17,12 @@ function Home({ user, organizer }) {
             {/* <Event /> */}
             {/* <OrganizerHome /> */}
             
-            { organizer && <OrganizerHome /> }
+            {/* { organizer.type === 20 && <OrganizerHome /> } */}
 
             {/* <Form /> */}
             <Routes>
-                {/* <Auth /> */}
+                <Route path='organizer' element={<OrganizerHome/>}/>
+                <Route path='customer' element={<OrganizerHome/>}/>
             </Routes>
         </>
     )
