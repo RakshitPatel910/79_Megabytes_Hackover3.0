@@ -6,7 +6,7 @@ require("../db/conn");
 
 router.get('/allCust',async (req,res)=>{
     const data  = await Cust.find({})
-    return rees.json({data:data,status:true})
+    return res.json({data:data,status:true})
 })
 
 router.post("/getCust", async (req, res) => {
