@@ -5,12 +5,13 @@
 }
 
 .card{
-    height: 23%;
+    height: 32%;
     width: 90%;
-    background-color: bisque;
+    background-color: rgb(218, 242, 246);
     margin: 46px;
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
 }
 
 .cardHeader{

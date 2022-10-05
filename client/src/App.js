@@ -18,9 +18,7 @@ function App() {
 
 
 
-    useEffect(() => {
-      
-    }, [user]) 
+    useEffect(() => { }, [user])
     
 
     return (
@@ -49,9 +47,24 @@ function App() {
 
     // return(
     //   <>
-    //     <Admin/>
+    //     <BrowserRouter>
+
+    //       {/* <Navbar /> */}
+
+    //       <Routes>
+    //         <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
+    //         <Route path='/admin' exact element={<AdminSignIn />} />
+    //       </Routes>
+
+    //     </BrowserRouter>
     //   </>
     // )
+
+    return(
+      <>
+        <Admin/>
+      </>
+    )
 }
 
 export default App
