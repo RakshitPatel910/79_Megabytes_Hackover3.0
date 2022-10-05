@@ -61,20 +61,41 @@ function Admin() {
     const [clicked,setClicked] = useState(false)
     
     const [organizer,setOrganizer]=useState([])
-    
+
+    const [custData,setCustData]= useState([])
+
+     function toggleButton(a){
+      setClicked(a)
+      console.log(clicked)
+     }
+
     async function showData(){
       const Data = await axios.post('http://localhost:3010/getAllOrganizer');
       console.log(Data);
       setOrganizer(Data.data.data)
     }
 
-    useEffect(()=>{showData()}, [])
+    async function customer(){
+      const Data = await axios.get('http://localhost:3010/allCust');
+      console.log(Data);
+      setCustData(Data.data.data)
+    }
+
+    useEffect(()=>{
+      if(clicked){
+        showData()
+      }
+      else{
+        customer()
+      }
+    }, [clicked])
+
     
 
   return (
     <>
       <div
-        style={{
+          style={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-evenly",
@@ -82,13 +103,14 @@ function Admin() {
       >
         <div className="container1">
 
-            <ColorButton variant="contained" className="button">Customer</ColorButton>
+            <ColorButton variant="contained" className="button" onClick={()=>{toggleButton(false)}}>Customer</ColorButton>
         
-            <ColorButton variant="contained" className="button">Organizer</ColorButton>  
+            <ColorButton variant="contained" className="button" onClick={()=>{toggleButton(true)}}>Organizer</ColorButton>  
         </div>
 
         <div className="info">
           {
+            clicked?
             organizer.map((e)=>{
               console.log(e)
               return (
@@ -96,7 +118,15 @@ function Admin() {
                   <Card organizerData= {e} />          
                 </>
               )
+            }):custData.map((e)=>{
+              // console.log(e)
+              return (
+                <>
+                  <Card organizerData= {e} />          
+                </>
+              )
             })
+            
           }
          
         </div>
