@@ -20,6 +20,7 @@ const orgSchema = new mongoose.Schema({
     required: true,
   },
   adhaar: String,
+  approved:Boolean,
 });
 
 const Organizer = mongoose.model('Organizer', orgSchema);

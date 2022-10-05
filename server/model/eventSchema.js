@@ -6,7 +6,7 @@ const eventSchema = new mongoose.Schema({
     location: String,
     date: Date,
     seat: Number,
-    availSeat: Number,
+    bookedSeat: Number,
     image: String,
     price: Number,
     approved: Boolean,

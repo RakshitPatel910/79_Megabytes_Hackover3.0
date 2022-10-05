@@ -21,7 +21,7 @@ const custSchema = new mongoose.Schema({
   },
   eventList: [
     {
-      eventId: String,
+      eventName: String,
       date: Date,
     },
   ],
