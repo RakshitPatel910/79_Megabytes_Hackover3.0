@@ -13,6 +13,7 @@ function Form({  }) {
 
     const [date, setDate] = useState(null);
 
+    
     const [eventData, setEventData] = useState({
         organizerId: JSON.parse(localStorage.getItem('profile')),
     eventName: '',

@@ -11,7 +11,7 @@ import Admin from './components/Admin/Admin'
 
 function App() {
 
-    const [user, setUser] = useState(1)
+    const [user, setUser] = useState(0)
     // const [user, setUser] = useState(localStorage.getItem('profile'))
     const [customer, setCustomer] = useState(null);
     const [organizer, setOrganizer] = useState(null);
@@ -45,26 +45,26 @@ function App() {
     //   </>
     // )
 
-    // return(
-    //   <>
-    //     <BrowserRouter>
-
-    //       {/* <Navbar /> */}
-
-    //       <Routes>
-    //         <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
-    //         <Route path='/admin' exact element={<AdminSignIn />} />
-    //       </Routes>
-
-    //     </BrowserRouter>
-    //   </>
-    // )
-
     return(
       <>
-        <Admin/>
+        <BrowserRouter>
+
+          {/* <Navbar /> */}
+
+          <Routes>
+            <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
+            <Route path='/admin' exact element={<AdminSignIn />} />
+          </Routes>
+
+        </BrowserRouter>
       </>
     )
+
+    // return(
+    //   <>
+    //     <Admin/>
+    //   </>
+    // )
 }
 
 export default App
