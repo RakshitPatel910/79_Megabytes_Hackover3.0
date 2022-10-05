@@ -5,6 +5,9 @@ import Stack from "@mui/material/Stack";
 import { purple } from "@mui/material/colors";
 import '../Admin/style.css'
 import Card from './Card/Card'
+import axios from "axios";
+
+
 
 
 const BootstrapButton = styled(Button)({
@@ -57,6 +60,16 @@ function Admin() {
 
     const [clicked,setClicked] = useState(false)
     
+    const [organizer,setOrganizer]=useState([])
+    
+    async function showData(){
+      const Data = await axios.post('http://localhost:3010/getAllOrganizer');
+      console.log(Data);
+      setOrganizer(Data.data.data)
+    }
+
+    useEffect(()=>{showData()}, [])
+    
 
   return (
     <>
@@ -75,7 +88,17 @@ function Admin() {
         </div>
 
         <div className="info">
-          <Card />
+          {
+            organizer.map((e)=>{
+              console.log(e)
+              return (
+                <>
+                  <Card organizerData= {e} />          
+                </>
+              )
+            })
+          }
+         
         </div>
       </div>
     </>

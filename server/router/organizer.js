@@ -7,6 +7,12 @@ require("../db/conn");
 const Cust = require("../model/customerSchema");
 const { events } = require("../model/eventSchema");
 const Event = require('../model/eventSchema')
+const Organizer = require('../model/organizerSchema')
+
+router.post('/getAllOrganizer',async (req,res)=>{
+    const data = await Organizer.find({})
+    return res.json({data:data,status:true})
+})
 
 router.post('/events',async (req,res)=>{
     const {organizerId} = req.body

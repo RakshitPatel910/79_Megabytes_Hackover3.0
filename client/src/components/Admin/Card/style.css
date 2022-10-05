@@ -5,12 +5,14 @@
 }
 
 .card{
-    height: 23%;
+    height: 32%;
     width: 90%;
-    background-color: bisque;
-    margin: 46px;
+    background-color: rgb(218, 242, 246);
+    margin: 70px;
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
+    justify-content: space-between;
 }
 
 .cardHeader{
@@ -38,7 +40,8 @@
 .approve{
     display:flex;
     flex-direction: column;
-    margin-left:50%;
+    /* margin-left:30%; */
+    right: 10px ;
 }
 
 .approve > .button{
