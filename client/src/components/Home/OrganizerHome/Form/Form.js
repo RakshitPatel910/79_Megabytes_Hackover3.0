@@ -14,7 +14,7 @@ function Form({  }) {
     const [date, setDate] = useState(null);
 
     const [eventData, setEventData] = useState({
-        organizerId: '',
+        organizerId: JSON.parse(localStorage.getItem('profile')),
     eventName: '',
     location: '',
     date: Date,
@@ -34,8 +34,10 @@ function Form({  }) {
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
+        const user = JSON.parse(localStorage.getItem('profile'));
         // console.log(postData);
-
+        // console.log(user._id, 'hii')
+        setEventData({ ...eventData, organizerId: user._id})
         // if(currentId) {
         //     // dispatch(updatePost(currentId, postData));
         // } else {
@@ -64,7 +66,7 @@ function Form({  }) {
 
     const clear = () => {
         // setCurrentId(null);
-        setEventData({organizerId: '',
+        setEventData({organizerId: JSON.parse(localStorage.getItem('profile')),
         eventName: '',
         location: '',
         date: '',

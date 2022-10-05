@@ -9,7 +9,7 @@ import Form from './OrganizerHome/Form/Form.js';
 import OrganizerHome from './OrganizerHome/OrganizerHome.js';
 
 function Home({ user, organizer }) {
-    console.log(organizer)
+    // console.log(organizer)
     return (
         <>
             <Navbar />

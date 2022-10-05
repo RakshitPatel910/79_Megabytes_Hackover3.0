@@ -20,7 +20,7 @@ function EventCard({ event, setCurrentId }) {
 
     
     //      console.log("customer");
-         const data = await axios.get("http://localhost:3010/deleteEvent",{
+         const data = await axios.post("http://localhost:3010/deleteEvent",{
             eventName:event.eventName
          });
             console.log(data)
@@ -40,11 +40,11 @@ function EventCard({ event, setCurrentId }) {
     return (
         <Card className={classes.card}>
             {/* <CardMedia className={classes.media} image={event.image} title={event.eventName} /> */}
+            <img className={classes.media} src={event.image} alt={event.eventName} />
             {/* <div className={classes.overlay}>
                 <Typography variant="h6">{event.creator}</Typography>
                 <Typography variant="body2">{moment(event.createdAt).fromNow()}</Typography>
             </div> */}
-            <img className={classes.media} src={event.image} alt={event.eventName} />
             <div className={classes.overlay2}>
                 <Button 
                     style={{color: 'white'}} 

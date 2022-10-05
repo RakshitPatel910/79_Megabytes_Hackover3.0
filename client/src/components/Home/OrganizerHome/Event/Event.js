@@ -1,19 +1,17 @@
 import React, { useState,useEffect } from 'react';
+import { json, useNavigate } from 'react-router-dom';
 
 import { Grid, CircularProgress } from '@material-ui/core';
 
 import useStyles from './styles';
 import EventCard from './EventCard/EventCard';
-import axios from 'axios'
-
-
+import axios from 'axios';
 
 function Event() {
 
-    
-
     const classes = useStyles();
 
+    const navigete = useNavigate();
     
 
     //  const handleSubmit = async () => {
@@ -64,6 +62,7 @@ function Event() {
     //     // price: 2000,
     //     // approved: false
     //   }
+    
     ]);
 
     useEffect(() => {
@@ -74,19 +73,20 @@ function Event() {
         // email: data.get('email'),
         // password: data.get('password'),
         // });
-
-        console.log("customer");
-        const data = await axios.get("http://localhost:3010/getAllEvent");
-        console.log(data);
-        if (data.data.status == true) {
+        const user = JSON.parse(localStorage.getItem('profile'));
+        console.log(user._id);
+        const data = await axios.post("http://localhost:3010/events", {organizerId: JSON.stringify(user._id)});
+        // console.log(data);
+        console.log(data)
+        // if (data.data.status == true) {
           //    console.log("status is true");
 
           // navigate("/");
-          setEvents(data.data.data);
+          // setEvents(data.data.event);
           // setUser({ userId: data.profile._id, type: 10 })
-        } else {
-          alert("Email or Password is incorrect");
-        }
+        // } else {
+        //   alert("Email or Password is incorrect");
+        // }
       };
 
       handleSubmit();

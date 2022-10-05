@@ -18,7 +18,7 @@ router.post('/events',async (req,res)=>{
         }
     })
 
-    return res.json({event:events,status:true})
+    return res.json({event:event,status:true})
 })
 
 router.post('/addEvent',async (req,res)=>{
