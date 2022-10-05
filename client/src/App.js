@@ -21,29 +21,29 @@ function App() {
     useEffect(() => { }, [user])
     
 
-    return (
-      <>
-        <BrowserRouter>
+    // return (
+    //   <>
+    //     <BrowserRouter>
 
-          {/* <Navbar /> */}
+    //       {/* <Navbar /> */}
 
-          <Routes>
+    //       <Routes>
 
-            {/* <Route path={user ? '/home' : '/'} element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
+    //         {/* <Route path={user ? '/home' : '/'} element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
             
-            <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer}/>}/> */}
+    //         <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer}/>}/> */}
 
-             {user ? 
-               <Route path='/*' element={<Home />} />:
-               <Route path='/' element={<Auth />} />
-             }
+    //          {user ? 
+    //            <Route path='/*' element={<Home />} />:
+    //            <Route path='/' element={<Auth />} />
+    //          }
 
-            <Route path='/admin' exact element={<AdminSignIn />} />
-          </Routes>
+    //         <Route path='/admin' exact element={<AdminSignIn />} />
+    //       </Routes>
 
-        </BrowserRouter>
-      </>
-    )
+    //     </BrowserRouter>
+    //   </>
+    // )
 
     // return(
     //   <>
@@ -60,11 +60,11 @@ function App() {
     //   </>
     // )
 
-    // return(
-    //   <>
-    //     <Admin/>
-    //   </>
-    // )
+    return(
+      <>
+        <Admin/>
+      </>
+    )
 }
 
 export default App
