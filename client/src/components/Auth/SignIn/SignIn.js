@@ -61,8 +61,8 @@ export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
             if(data.data.status == true){
                 console.log("status is true")
                 // navigate("/");
+                setUser({ userId: data.profile._id, type: 10 })
                 setUser(1);
-                // setUser({ userId: data.profile._id, type: 10 })
                 }
                 else{
                 alert('Email or Password is incorrect')
@@ -79,8 +79,8 @@ export default function SignIn({ setIsSignUp, setUser, setOrganizer }) {
             if(data.data.status == true){
                 console.log("status is true")
                 // navigate("/home");
+                setOrganizer({ userId: data.data.profile._id, type: 20 });
                 setUser(1);
-                // setOrganizer({ userId: data.profile._id, type: 20 });
             }
             else{
                 alert('Email or Password is incorrect')
