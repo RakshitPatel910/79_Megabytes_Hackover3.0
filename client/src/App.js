@@ -30,7 +30,16 @@ function App() {
     //       {/* <Navbar /> */}
 
     //       <Routes>
-    //         <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
+
+    //         {/* <Route path={user ? '/home' : '/'} element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
+            
+    //         <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer}/>}/> */}
+
+    //          {user ? 
+    //            <Route path='/*' element={<Home />} />:
+    //            <Route path='/' element={<Auth />} />
+    //          }
+
     //         <Route path='/admin' exact element={<AdminSignIn />} />
     //       </Routes>
 

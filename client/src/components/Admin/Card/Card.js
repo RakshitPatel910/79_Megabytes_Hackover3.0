@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { purple } from "@mui/material/colors";
+import axios from 'axios';
 import './style.css'
 
 
@@ -51,7 +52,9 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
- 
+ const onClickHandleApprove = () => {
+    
+ }
 
 
 function Card({organizerData}){
@@ -66,10 +69,10 @@ function Card({organizerData}){
                 </a>
             </div>
             <div className="approve" >
-                <ColorButton variant="contained" className="button">
+                <ColorButton variant="contained" className="button" onClick={()=>{}}>
                     Approve
                 </ColorButton>
-                <ColorButton variant="contained" className="button">
+                <ColorButton variant="contained" className="button" onClick={()=>{}}>
                     Disapprove
                 </ColorButton>
             </div>

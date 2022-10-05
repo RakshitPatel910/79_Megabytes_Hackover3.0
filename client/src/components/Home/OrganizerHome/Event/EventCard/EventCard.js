@@ -6,9 +6,10 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import useStyles from '../styles';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 function EventCard({ event, setCurrentId }) {
-    
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
     //    // event.preventDefault();
@@ -27,7 +28,7 @@ function EventCard({ event, setCurrentId }) {
          if (data.data.status == true) {
         //    console.log("status is true");
 
-           // navigate("/");
+           navigate("/organizer");
         //    setEvents(data.data)
            // setUser({ userId: data.profile._id, type: 10 })
          } else {
