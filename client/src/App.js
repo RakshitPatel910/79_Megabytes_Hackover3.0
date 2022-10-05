@@ -12,8 +12,11 @@ import Admin from './components/Admin/Admin'
 function App() {
 
     // const [user, setUser] = useState(1)
-    const [user, setUser] = useState(0)
-    const [organizer, setOrganizer] = useState(null)
+    const [user, setUser] = useState(localStorage.getItem('profile'))
+    const [customer, setCustomer] = useState(null);
+    const [organizer, setOrganizer] = useState(null);
+
+
 
     useEffect(() => {
       
@@ -27,9 +30,17 @@ function App() {
           {/* <Navbar /> */}
 
           <Routes>
-            <Route path='/' exact element={ user ? <Home /> : <Auth setUser={setUser} />} />
-            <Route path='/' exact element={ user ? <Home user={user} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} />
-            <Route path='/admin' exact element={<AdminSignIn />} />
+
+            {/* <Route path={user ? '/home' : '/'} element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer} />} /> */}
+            
+            {/* <Route path='/*' element={ user ? <Home user={user} customer={customer} organizer={organizer} /> : <Auth setUser={setUser} setOrganizer={setOrganizer}/>}/> */}
+
+             {user ? 
+               <Route path='/*' element={<Home />} />:
+               <Route path='/' element={<Auth />} />
+             }
+
+            // <Route path='/admin' exact element={<AdminSignIn />} />
           </Routes>
 
         </BrowserRouter>
