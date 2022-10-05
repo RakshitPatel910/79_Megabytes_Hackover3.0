@@ -59,7 +59,7 @@ function Card(){
       <>
         <div className="card">
             <div>
-                <h1 className="cardHeader">Satyam Singh</h1>
+                <h1 className="cardHeader" style={{width:"70%"}}>Satyam Singh</h1>
                 <h2 className="cardInfo">ss4078017@gmail.com</h2>
                 <a href="http://" className="adhaar">
                     Adhaar Card <ContactPageIcon className="icon" />
